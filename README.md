@@ -12,7 +12,7 @@ Step 2. Then open (cd into) client directory, you may use cmd, powershell or any
 # npm install, for installing the dependencies into your computer
 npm install
 # Running the client server, if you want to test CRUD operations, make suer that .net core server API is also running
-npm run dev
+npm start
 ```
 
 Step 3. Wait until it finsihes, then open http://localhost:3000/ through browser, preferably through Google Chrome
