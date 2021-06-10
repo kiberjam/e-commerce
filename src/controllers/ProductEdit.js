@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import * as Yup from "yup";
 import { Formik, Field, Form, ErrorMessage } from "formik";
+import { leftArrow } from "../icons";
 
 const ProductEditController = () => {
   const { id } = useParams();
@@ -51,7 +52,7 @@ const ProductEditView = ({ product, onEditHandle }) => {
           {leftArrow}
         </Link>
       </div>
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto px-4">
         <h2 className=" text-2xl my-2 text-blueGray-700 font-semibold">
           Adding new Product
         </h2>
@@ -141,20 +142,3 @@ const ProductEditView = ({ product, onEditHandle }) => {
     </div>
   );
 };
-
-const leftArrow = (
-  <svg
-    className="w-6 h-6"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M11 19l-7-7 7-7m8 14l-7-7 7-7"
-    />
-  </svg>
-);

@@ -1,6 +1,7 @@
 import Header from "../components/Header";
 import ProductCard from "../components/ProductCard";
 import { useState, useEffect } from "react";
+import { arrowIcon } from "../icons";
 
 const ProductListController = () => {
   const [data, setData] = useState([]);
@@ -51,7 +52,7 @@ export default ProductListController;
 const ProductListView = ({ products, onSortCategory, onSortPrice }) => {
   return (
     <div className="bg-blueGray-100 min-h-screen">
-      <div className=" max-w-6xl mx-auto pt-4 pb-20 ">
+      <div className=" max-w-6xl mx-auto pt-4 pb-20 px-4 ">
         <Header />
         <div className="text-xl text-blueGray-700 mt-10">
           <h2 className="text-2xl border-b pb-2 border-emerald-300">
@@ -70,7 +71,7 @@ const ProductListView = ({ products, onSortCategory, onSortPrice }) => {
               </button>
             </div>
           </div>
-          <div className="grid mt-4  gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
+          <div className="grid mt-4  gap-8 grid-cols-1 sm:grid-cols-2 xl:grid-cols-2">
             {products.map((item) => {
               return <ProductCard key={item.id} product={item} />;
             })}
@@ -148,19 +149,3 @@ const CategoryDropDownMenu = ({ onSortCategory }) => {
     </div>
   );
 };
-
-const arrowIcon = (
-  <svg
-    class="-mr-1 ml-2 h-5 w-5"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 20 20"
-    fill="currentColor"
-    aria-hidden="true"
-  >
-    <path
-      fill-rule="evenodd"
-      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-      clip-rule="evenodd"
-    />
-  </svg>
-);

@@ -3,9 +3,8 @@ import { useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import DashboardPage from "./components/DashboardPage";
-import ProductsPage from "./components/ProductsPage";
-import ProductCreateController from "./components/ProductCreatePage";
-import ProductDetailController from "./components/ProductDetailPage";
+import ProductCreateController from "./controllers/ProductCreate";
+import ProductDetailController from "./controllers/ProductDetail";
 import ProductEditController from "./controllers/ProductEdit";
 import ProductListController from "./controllers/ProductList";
 
