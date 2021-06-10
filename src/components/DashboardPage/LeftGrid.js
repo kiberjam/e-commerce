@@ -1,9 +1,38 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const LeftGrid = () => {
+  const [numOfLaptops, setNumOfLaptops] = useState(0);
+  const [numOfMonos, setNumOfMonos] = useState(0);
+  const [numOfPrinters, setNumOfPrinters] = useState(0);
+
+  useEffect(() => {
+    let laptops = 0;
+    let monos = 0;
+    let printers = 0;
+    const productsList = JSON.parse(localStorage.getItem("myProducts"));
+    productsList.forEach((element) => {
+      console.log(element.category);
+      switch (element.category) {
+        case "laptop":
+          laptops++;
+          break;
+        case "printer":
+          printers++;
+          break;
+        case "monoblock":
+          monos++;
+          break;
+      }
+    });
+    setNumOfLaptops(laptops);
+    setNumOfMonos(monos);
+    setNumOfPrinters(printers);
+  }, []);
+
   return (
     <div
-      className="h-screen flex-none z-50 w-72 bg-white  shadow border-r border-gray-300 p-4
+      className="h-screen flex-none z-50 w-64 bg-white  shadow border-r border-gray-300 p-4
     flex flex-col"
     >
       <div className="flex-auto text-left">
@@ -11,13 +40,13 @@ const LeftGrid = () => {
           Number of products per category:
         </h2>
         <div className="mt-8 space-y-6">
-          <SingleCategory2 />
-          <SingleCategory />
-          <SingleCategory3 />
+          <LaptopCategory number={numOfLaptops} />
+          <MonoCategory number={numOfMonos} />
+          <PrinterCategory number={numOfPrinters} />
         </div>
       </div>
       <Link
-        to="/"
+        to="/products/create"
         className="bg-emerald-500 text-white font-semibold p-2 rounded 
         text-lg hover:bg-emerald-400 flex items-center justify-center"
       >
@@ -30,37 +59,37 @@ const LeftGrid = () => {
 
 export default LeftGrid;
 
-const SingleCategory = () => {
-  return (
-    <div className="grid grid-cols-4 ">
-      <div className="flex items-center text-blueGray-500">{mono}</div>
-      <div className="col-span-3 text-xl text-blueGray-500">
-        <h3>Monoblock:</h3>
-        <h3>87</h3>
-      </div>
-    </div>
-  );
-};
-
-const SingleCategory2 = () => {
+const LaptopCategory = ({ number }) => {
   return (
     <div className="grid grid-cols-4 ">
       <div className="flex items-center text-blueGray-500">{note}</div>
       <div className="col-span-3 text-xl text-blueGray-500">
-        <h3>Notebook:</h3>
-        <h3>123</h3>
+        <h3>Laptops:</h3>
+        <h3>{number}</h3>
       </div>
     </div>
   );
 };
 
-const SingleCategory3 = () => {
+const MonoCategory = ({ number }) => {
+  return (
+    <div className="grid grid-cols-4 ">
+      <div className="flex items-center text-blueGray-500">{mono}</div>
+      <div className="col-span-3 text-xl text-blueGray-500">
+        <h3>Monoblocks:</h3>
+        <h3>{number}</h3>
+      </div>
+    </div>
+  );
+};
+
+const PrinterCategory = ({ number }) => {
   return (
     <div className="grid grid-cols-4 ">
       <div className="flex items-center text-blueGray-500">{printer}</div>
       <div className="col-span-3 text-xl text-blueGray-500">
         <h3>Printers:</h3>
-        <h3>43</h3>
+        <h3>{number}</h3>
       </div>
     </div>
   );

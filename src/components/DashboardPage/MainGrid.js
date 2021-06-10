@@ -1,16 +1,25 @@
 import ProductCard, { ProductCard2 } from "../ProductCard";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const MainGrid = () => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const productsList = JSON.parse(localStorage.getItem("myProducts"));
+    const latestThree = productsList.slice(-3).reverse(); // reversing the array and slicing so that only top 3 appears
+    setData(latestThree);
+  }, []);
+
   return (
     <div className="w-full  ">
       <h1 className="text-2xl border-b border-emerald-300 pb-2">
         Latest added products:
       </h1>
       <div class="grid mt-8  gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
-        <ProductCard />
-        <ProductCard2 />
-        <ProductCard />
+        {data.length !== 0 &&
+          data.map((item) => {
+            return <ProductCard key={item.id} product={item} />;
+          })}
         <ViewProductsBox />
       </div>
     </div>
