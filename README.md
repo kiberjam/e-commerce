@@ -8,10 +8,10 @@ git clone https://github.com/kiberjam/e-commerce.git
 
 Step 2. Then open (cd into) client directory, you may use cmd, powershell or any command-line interpreter of your OS/Code-editor, then run following commands accordingly:
 
-```bash
 # npm install, for installing the dependencies into your computer
+
+```bash
 npm install
-# Running the client server, if you want to test CRUD operations, make suer that .net core server API is also running
 npm start
 ```
 
